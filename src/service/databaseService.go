@@ -1,14 +1,18 @@
 package service
 
 import (
-	"github.com/jinzhu/gorm"
-	"engsmyre.xyz/vasttrafik-tracker/database"
+	"github.com/gurr1/vasttrafik-tracker/database"
+	"log"
 )
 
-var Database gorm.DB
 
 func Connect() {
-	database.Connect()
+	err := database.Connect()
+	if err != nil {
+		log.Fatal("Could not connect to database")
+	}
+	database.CreateAuthentication("token")
+	database.GetActiveAuthentication()
 }
 
 

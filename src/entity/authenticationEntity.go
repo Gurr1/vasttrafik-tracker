@@ -1,10 +1,19 @@
 package entity
 
-import "github.com/golang/protobuf/ptypes/timestamp"
+import (
+	"time"
+)
 
 type AuthenticationDetails struct {
-	Id				string					`json:"id"`
-	Token 			string					`json:"token"`
-	updatedAt		timestamp.Timestamp
-	expirationTime	int
+	ID             string    `json:"id"`
+	Token          string    `json:"token"`
+	UpdatedAt      time.Time `json:"updated_at"`
+	ExpirationTime time.Time `json:"expiration_time"`
+}
+
+
+
+func IsExpired(details AuthenticationDetails) bool{
+
+	return false
 }
